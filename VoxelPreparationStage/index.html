@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>VoxelPreparationStage - VirConv Module Extraction 文档</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../css/overrides.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "VoxelPreparationStage";
+        var mkdocs_page_input_path = "VoxelPreparationStage.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> VirConv Module Extraction 文档
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">文档首页</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">VoxelPreparationStage</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">阶段目标</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">本阶段包含的算子</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#api">API 文档</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#stvd_input">stvd_input</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#VoxelPreparationStage.operator.stvd_input">stvd_input</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#VoxelPreparationStage.operator.stvd_input.stvd_input">stvd_input</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#point_fusion">point_fusion</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#VoxelPreparationStage.operator.point_fusion">point_fusion</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#VoxelPreparationStage.operator.point_fusion.point_fusion">point_fusion</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#point_align">point_align</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#VoxelPreparationStage.operator.point_align">point_align</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#VoxelPreparationStage.operator.point_align.point_align">point_align</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#voxelization">voxelization</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#VoxelPreparationStage.operator.voxelization">voxelization</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#VoxelPreparationStage.operator.voxelization.voxelization">voxelization</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#distance_binning">distance_binning</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#VoxelPreparationStage.operator.distance_binning">distance_binning</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#VoxelPreparationStage.operator.distance_binning.distance_binning">distance_binning</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../VirConvStage/">VirConvStage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../framework/">Framework</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">VirConv Module Extraction 文档</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">VoxelPreparationStage</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="voxel-preparation-stage">Voxel Preparation Stage（体素准备阶段）<a class="headerlink" href="#voxel-preparation-stage" title="Permanent link">&para;</a></h1>
+<p>本阶段的作用是 <strong>对 LiDAR 点云与伪点云进行统一预处理，并构建 VirConv Block 的标准输入表示</strong>。<br />
+该阶段不涉及可学习参数，主要由 <strong>几何处理与规则化算子</strong> 组成，为后续稀疏卷积与融合计算奠定基础。</p>
+<hr />
+<h2 id="_1">阶段目标<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>Voxel Preparation Stage 的主要目标包括：</p>
+<ul>
+<li>融合真实 LiDAR 点云与伪点云</li>
+<li>对点级数据进行坐标对齐与规则化</li>
+<li>将不规则点云转换为体素级表示</li>
+<li>引入距离分箱等先验信息，增强空间建模能力</li>
+<li>为 VirConv Block 构建 STVD 所需的输入结构</li>
+</ul>
+<hr />
+<h2 id="_2">本阶段包含的算子<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>本阶段共包含 <strong>5 个算子</strong>，执行顺序如下：</p>
+<ol>
+<li>
+<p><strong>stvd_input</strong><br />
+   构建 STVD 所需的基础输入结构。</p>
+</li>
+<li>
+<p><strong>point_fusion</strong><br />
+   融合 LiDAR 点云与伪点云，形成统一点集。</p>
+</li>
+<li>
+<p><strong>point_align</strong><br />
+   对融合后的点云进行坐标与格式对齐。</p>
+</li>
+<li>
+<p><strong>voxelization</strong><br />
+   将点云转换为稀疏体素表示。</p>
+</li>
+<li>
+<p><strong>distance_binning</strong><br />
+   基于体素中心的空间距离进行分箱编码。</p>
+</li>
+</ol>
+<hr />
+<h2 id="api">API 文档<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
+<p>以下 API 文档由 <strong>代码注释自动生成（mkdocstrings）</strong>。</p>
+<hr />
+<h3 id="stvd_input">stvd_input<a class="headerlink" href="#stvd_input" title="Permanent link">&para;</a></h3>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="VoxelPreparationStage.operator.stvd_input"></a>
+    <div class="doc doc-contents first">
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="VoxelPreparationStage.operator.stvd_input.stvd_input" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">stvd_input</span><span class="p">(</span><span class="n">voxel_coords</span><span class="p">,</span> <span class="n">voxel_features</span><span class="p">,</span> <span class="n">bin_ids</span><span class="p">,</span> <span class="n">discard_rate</span><span class="p">)</span></code>
+
+<a href="#VoxelPreparationStage.operator.stvd_input.stvd_input" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>对输入体素执行随机丢弃（Input StVD），用于控制体素数量。</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>voxel_coords</code></b>
+                  (<code><span title="torch.Tensor">Tensor</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>(M, 3)
+输入体素坐标索引。</p>
+              </div>
+            </li>
+            <li>
+              <b><code>voxel_features</code></b>
+                  (<code><span title="torch.Tensor">Tensor</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>(M, C)
+输入体素特征。</p>
+              </div>
+            </li>
+            <li>
+              <b><code>bin_ids</code></b>
+                  (<code><span title="torch.Tensor">Tensor</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>(M,)
+体素所属的距离 bin（由算子 4 生成）。</p>
+              </div>
+            </li>
+            <li>
+              <b><code>discard_rate</code></b>
+                  (<code>float</code>)
+              –
+              <div class="doc-md-description">
+                <p>float
+丢弃比例，取值范围 [0, 1)，表示随机丢弃的体素比例。</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>voxel_coords_kept</code></b>(                  <code><span title="torch.Tensor">Tensor</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>(M', 3)
+丢弃后保留的体素坐标。</p>
+              </div>
+            </li>
+            <li>
+<b><code>voxel_features_kept</code></b>(                  <code><span title="torch.Tensor">Tensor</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>(M', C)
+丢弃后保留的体素特征。</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+            <details class="quote">
+              <summary>Source code in <code>VoxelPreparationStage\operator\stvd_input.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@torch</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">custom_op</span><span class="p">(</span><span class="s2">&quot;virconv::stvd_input&quot;</span><span class="p">,</span> <span class="n">mutates_args</span><span class="o">=</span><span class="p">[])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">stvd_input</span><span class="p">(</span><span class="n">voxel_coords</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+               <span class="n">voxel_features</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+               <span class="n">bin_ids</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+               <span class="n">discard_rate</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    对输入体素执行随机丢弃（Input StVD），用于控制体素数量。</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        voxel_coords: (M, 3)</span>
+<span class="sd">            输入体素坐标索引。</span>
+<span class="sd">        voxel_features: (M, C)</span>
+<span class="sd">            输入体素特征。</span>
+<span class="sd">        bin_ids: (M,)</span>
+<span class="sd">            体素所属的距离 bin（由算子 4 生成）。</span>
+<span class="sd">        discard_rate: float</span>
+<span class="sd">            丢弃比例，取值范围 [0, 1)，表示随机丢弃的体素比例。</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        voxel_coords_kept: (M&#39;, 3)</span>
+<span class="sd">            丢弃后保留的体素坐标。</span>
+<span class="sd">        voxel_features_kept: (M&#39;, C)</span>
+<span class="sd">            丢弃后保留的体素特征。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">voxel_coords</span><span class="o">.</span><span class="n">ndim</span> <span class="o">!=</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">voxel_coords</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>  <span class="c1"># 检查坐标</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;voxel_coords must be (M,3), got </span><span class="si">{</span><span class="n">voxel_coords</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># 报错信息</span>
+    <span class="k">if</span> <span class="n">voxel_features</span><span class="o">.</span><span class="n">ndim</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>  <span class="c1"># 检查特征</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;voxel_features must be (M,C), got </span><span class="si">{</span><span class="n">voxel_features</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># 报错信息</span>
+    <span class="k">if</span> <span class="n">voxel_coords</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">voxel_features</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>  <span class="c1"># 数量一致性</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;voxel_coords and voxel_features must have same length&quot;</span><span class="p">)</span>  <span class="c1"># 报错信息</span>
+    <span class="k">if</span> <span class="n">bin_ids</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">voxel_coords</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>  <span class="c1"># bin 对齐</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;bin_ids must have same length as voxel_coords&quot;</span><span class="p">)</span>  <span class="c1"># 报错信息</span>
+
+    <span class="k">if</span> <span class="n">discard_rate</span> <span class="o">&lt;=</span> <span class="mf">0.0</span><span class="p">:</span>  <span class="c1"># 不丢弃</span>
+        <span class="k">return</span> <span class="n">voxel_coords</span><span class="o">.</span><span class="n">clone</span><span class="p">(),</span> <span class="n">voxel_features</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>  <span class="c1"># 直接返回</span>
+    <span class="k">if</span> <span class="n">discard_rate</span> <span class="o">&gt;=</span> <span class="mf">1.0</span><span class="p">:</span>  <span class="c1"># 全丢弃（极端情况）</span>
+        <span class="k">return</span> <span class="n">voxel_coords</span><span class="p">[:</span><span class="mi">0</span><span class="p">],</span> <span class="n">voxel_features</span><span class="p">[:</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># 返回空</span>
+
+    <span class="c1"># 为每个体素生成随机保留标记</span>
+    <span class="n">keep_prob</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">discard_rate</span>  <span class="c1"># 保留概率</span>
+    <span class="n">rand</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span>
+        <span class="p">(</span><span class="n">voxel_coords</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],),</span>
+        <span class="n">device</span><span class="o">=</span><span class="n">voxel_coords</span><span class="o">.</span><span class="n">device</span><span class="p">,</span>
+        <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">keep_mask</span> <span class="o">=</span> <span class="n">rand</span> <span class="o">&lt;</span> <span class="n">keep_prob</span>  <span class="c1"># 是否保留</span>
+
+    <span class="n">voxel_coords_kept</span> <span class="o">=</span> <span class="n">voxel_coords</span><span class="p">[</span><span class="n">keep_mask</span><span class="p">]</span>  <span class="c1"># 筛选坐标</span>
+    <span class="n">voxel_features_kept</span> <span class="o">=</span> <span class="n">voxel_features</span><span class="p">[</span><span class="n">keep_mask</span><span class="p">]</span>  <span class="c1"># 筛选特征</span>
+
+    <span class="k">return</span> <span class="n">voxel_coords_kept</span><span class="p">,</span> <span class="n">voxel_features_kept</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><hr />
+<h3 id="point_fusion">point_fusion<a class="headerlink" href="#point_fusion" title="Permanent link">&para;</a></h3>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="VoxelPreparationStage.operator.point_fusion"></a>
+    <div class="doc doc-contents first">
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="VoxelPreparationStage.operator.point_fusion.point_fusion" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">point_fusion</span><span class="p">(</span><span class="n">points_lidar</span><span class="p">,</span> <span class="n">points_virtual</span><span class="p">)</span></code>
+
+<a href="#VoxelPreparationStage.operator.point_fusion.point_fusion" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>将 LiDAR 点云与 Virtual points 进行融合拼接，并返回融合后的点云张量。</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>points_lidar</code></b>
+                  (<code><span title="torch.Tensor">Tensor</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>(N, C)
+LiDAR 点云张量，每行表示一个点，C 为点特征维度。</p>
+              </div>
+            </li>
+            <li>
+              <b><code>points_virtual</code></b>
+                  (<code><span title="torch.Tensor">Tensor</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>(M, C)
+虚拟点云张量，每行表示一个点，C 为点特征维度。</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>points_fused</code></b>(                  <code><span title="torch.Tensor">Tensor</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>(N+M, C)
+融合后的点云张量，按行拼接 [points_lidar; points_virtual]。</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+            <details class="quote">
+              <summary>Source code in <code>VoxelPreparationStage\operator\point_fusion.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@torch</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">custom_op</span><span class="p">(</span><span class="s2">&quot;virconv::point_fusion&quot;</span><span class="p">,</span> <span class="n">mutates_args</span><span class="o">=</span><span class="p">[])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">point_fusion</span><span class="p">(</span><span class="n">points_lidar</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">points_virtual</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    将 LiDAR 点云与 Virtual points 进行融合拼接，并返回融合后的点云张量。</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        points_lidar: (N, C)</span>
+<span class="sd">            LiDAR 点云张量，每行表示一个点，C 为点特征维度。</span>
+<span class="sd">        points_virtual: (M, C)</span>
+<span class="sd">            虚拟点云张量，每行表示一个点，C 为点特征维度。</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        points_fused: (N+M, C)</span>
+<span class="sd">            融合后的点云张量，按行拼接 [points_lidar; points_virtual]。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">points_lidar</span><span class="o">.</span><span class="n">ndim</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>  <span class="c1"># 检查维度</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;points_lidar must be 2D (N,C), got </span><span class="si">{</span><span class="n">points_lidar</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># 报错信息</span>
+    <span class="k">if</span> <span class="n">points_virtual</span><span class="o">.</span><span class="n">ndim</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>  <span class="c1"># 检查维度</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;points_virtual must be 2D (M,C), got </span><span class="si">{</span><span class="n">points_virtual</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># 报错信息</span>
+
+    <span class="k">if</span> <span class="n">points_lidar</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="n">points_virtual</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>  <span class="c1"># 检查特征维度一致</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;feature dim mismatch: lidar C=</span><span class="si">{</span><span class="n">points_lidar</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> vs virtual C=</span><span class="si">{</span><span class="n">points_virtual</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>  <span class="c1"># 报错信息</span>
+
+    <span class="k">if</span> <span class="n">points_virtual</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># 处理空虚拟点</span>
+        <span class="k">return</span> <span class="n">points_lidar</span>  <span class="c1"># 直接返回</span>
+    <span class="k">if</span> <span class="n">points_lidar</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># 处理空雷达点</span>
+        <span class="k">return</span> <span class="n">points_virtual</span>  <span class="c1"># 直接返回</span>
+
+    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">points_lidar</span><span class="p">,</span> <span class="n">points_virtual</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># 行拼接融合</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><hr />
+<h3 id="point_align">point_align<a class="headerlink" href="#point_align" title="Permanent link">&para;</a></h3>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="VoxelPreparationStage.operator.point_align"></a>
+    <div class="doc doc-contents first">
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="VoxelPreparationStage.operator.point_align.point_align" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">point_align</span><span class="p">(</span><span class="n">points</span><span class="p">)</span></code>
+
+<a href="#VoxelPreparationStage.operator.point_align.point_align" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>对融合后的点云进行特征对齐处理，保证点特征格式统一。</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>points</code></b>
+                  (<code><span title="torch.Tensor">Tensor</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>(N, C)
+输入点云张量，每行表示一个点，C 为点特征维度，
+默认假设点特征已经是统一格式（如 [x, y, z, intensity]）。</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>points_aligned</code></b>(                  <code><span title="torch.Tensor">Tensor</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>(N, C)
+特征对齐后的点云张量，与输入形状一致。</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+            <details class="quote">
+              <summary>Source code in <code>VoxelPreparationStage\operator\point_align.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@torch</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">custom_op</span><span class="p">(</span><span class="s2">&quot;virconv::point_align&quot;</span><span class="p">,</span> <span class="n">mutates_args</span><span class="o">=</span><span class="p">[])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">point_align</span><span class="p">(</span><span class="n">points</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    对融合后的点云进行特征对齐处理，保证点特征格式统一。</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        points: (N, C)</span>
+<span class="sd">            输入点云张量，每行表示一个点，C 为点特征维度，</span>
+<span class="sd">            默认假设点特征已经是统一格式（如 [x, y, z, intensity]）。</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        points_aligned: (N, C)</span>
+<span class="sd">            特征对齐后的点云张量，与输入形状一致。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">points</span><span class="o">.</span><span class="n">ndim</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>  <span class="c1"># 检查维度</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;points must be 2D (N,C), got </span><span class="si">{</span><span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># 报错信息</span>
+
+    <span class="c1"># 当前算子不修改点特征，仅作为对齐占位算子</span>
+    <span class="k">return</span> <span class="n">points</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><hr />
+<h3 id="voxelization">voxelization<a class="headerlink" href="#voxelization" title="Permanent link">&para;</a></h3>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="VoxelPreparationStage.operator.voxelization"></a>
+    <div class="doc doc-contents first">
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="VoxelPreparationStage.operator.voxelization.voxelization" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">voxelization</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">voxel_size</span><span class="p">,</span> <span class="n">point_cloud_range</span><span class="p">)</span></code>
+
+<a href="#VoxelPreparationStage.operator.voxelization.voxelization" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>将点云映射到体素网格中，并生成体素坐标与体素特征。</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>points</code></b>
+                  (<code><span title="torch.Tensor">Tensor</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>(N, C)
+输入点云张量，前 3 维为 (x, y, z)，其余为点特征。</p>
+              </div>
+            </li>
+            <li>
+              <b><code>voxel_size</code></b>
+                  (<code><span title="torch.Tensor">Tensor</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>(3,)
+体素尺寸 [vx, vy, vz]。</p>
+              </div>
+            </li>
+            <li>
+              <b><code>point_cloud_range</code></b>
+                  (<code><span title="torch.Tensor">Tensor</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>(6,)
+点云范围 [x_min, y_min, z_min, x_max, y_max, z_max]。</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>voxel_coords</code></b>(                  <code><span title="torch.Tensor">Tensor</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>(M, 3)
+非空体素的整数坐标索引 (ix, iy, iz)。</p>
+              </div>
+            </li>
+            <li>
+<b><code>voxel_features</code></b>(                  <code><span title="torch.Tensor">Tensor</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>(M, C)
+每个体素对应的特征，采用体素内点特征的均值聚合。</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+            <details class="quote">
+              <summary>Source code in <code>VoxelPreparationStage\operator\voxelization.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@torch</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">custom_op</span><span class="p">(</span><span class="s2">&quot;virconv::voxelization&quot;</span><span class="p">,</span> <span class="n">mutates_args</span><span class="o">=</span><span class="p">[])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">voxelization</span><span class="p">(</span><span class="n">points</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+                 <span class="n">voxel_size</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+                 <span class="n">point_cloud_range</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    将点云映射到体素网格中，并生成体素坐标与体素特征。</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        points: (N, C)</span>
+<span class="sd">            输入点云张量，前 3 维为 (x, y, z)，其余为点特征。</span>
+<span class="sd">        voxel_size: (3,)</span>
+<span class="sd">            体素尺寸 [vx, vy, vz]。</span>
+<span class="sd">        point_cloud_range: (6,)</span>
+<span class="sd">            点云范围 [x_min, y_min, z_min, x_max, y_max, z_max]。</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        voxel_coords: (M, 3)</span>
+<span class="sd">            非空体素的整数坐标索引 (ix, iy, iz)。</span>
+<span class="sd">        voxel_features: (M, C)</span>
+<span class="sd">            每个体素对应的特征，采用体素内点特征的均值聚合。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">points</span><span class="o">.</span><span class="n">ndim</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;points must be 2D (N,C), got </span><span class="si">{</span><span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;points must contain at least xyz coordinates&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 统一 device / dtype</span>
+    <span class="n">voxel_size</span> <span class="o">=</span> <span class="n">voxel_size</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">points</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">point_cloud_range</span> <span class="o">=</span> <span class="n">point_cloud_range</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">points</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+    <span class="n">xyz</span> <span class="o">=</span> <span class="n">points</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+    <span class="n">feats</span> <span class="o">=</span> <span class="n">points</span>
+
+    <span class="n">pc_min</span> <span class="o">=</span> <span class="n">point_cloud_range</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+    <span class="n">pc_max</span> <span class="o">=</span> <span class="n">point_cloud_range</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span>
+
+    <span class="n">mask</span> <span class="o">=</span> <span class="p">((</span><span class="n">xyz</span> <span class="o">&gt;=</span> <span class="n">pc_min</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">xyz</span> <span class="o">&lt;</span> <span class="n">pc_max</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">xyz</span> <span class="o">=</span> <span class="n">xyz</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+    <span class="n">feats</span> <span class="o">=</span> <span class="n">feats</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">xyz</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">empty_coords</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">device</span><span class="o">=</span><span class="n">points</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+        <span class="n">empty_feats</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">feats</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">device</span><span class="o">=</span><span class="n">points</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">points</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">empty_coords</span><span class="p">,</span> <span class="n">empty_feats</span>
+
+    <span class="n">voxel_coords</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">floor</span><span class="p">((</span><span class="n">xyz</span> <span class="o">-</span> <span class="n">pc_min</span><span class="p">)</span> <span class="o">/</span> <span class="n">voxel_size</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+
+    <span class="n">unique_coords</span><span class="p">,</span> <span class="n">inverse</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">voxel_coords</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">return_inverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">voxel_features</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span>
+        <span class="p">(</span><span class="n">unique_coords</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">feats</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+        <span class="n">device</span><span class="o">=</span><span class="n">feats</span><span class="o">.</span><span class="n">device</span><span class="p">,</span>
+        <span class="n">dtype</span><span class="o">=</span><span class="n">feats</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">voxel_features</span><span class="o">.</span><span class="n">index_add_</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">inverse</span><span class="p">,</span> <span class="n">feats</span><span class="p">)</span>
+
+    <span class="n">counts</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">unique_coords</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">),</span> <span class="n">device</span><span class="o">=</span><span class="n">feats</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">feats</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="n">ones</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">feats</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">),</span> <span class="n">device</span><span class="o">=</span><span class="n">feats</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">feats</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="n">counts</span><span class="o">.</span><span class="n">index_add_</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">inverse</span><span class="p">,</span> <span class="n">ones</span><span class="p">)</span>
+
+    <span class="n">voxel_features</span> <span class="o">=</span> <span class="n">voxel_features</span> <span class="o">/</span> <span class="n">counts</span><span class="o">.</span><span class="n">clamp_min</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+
+    <span class="c1"># custom_op 输出不允许 alias：这里本来就是新张量，但 coords 也 clone 一下更稳</span>
+    <span class="k">return</span> <span class="n">unique_coords</span><span class="o">.</span><span class="n">clone</span><span class="p">(),</span> <span class="n">voxel_features</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><hr />
+<h3 id="distance_binning">distance_binning<a class="headerlink" href="#distance_binning" title="Permanent link">&para;</a></h3>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="VoxelPreparationStage.operator.distance_binning"></a>
+    <div class="doc doc-contents first">
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="VoxelPreparationStage.operator.distance_binning.distance_binning" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">distance_binning</span><span class="p">(</span><span class="n">voxel_coords</span><span class="p">,</span> <span class="n">voxel_size</span><span class="p">,</span> <span class="n">point_cloud_range</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">)</span></code>
+
+<a href="#VoxelPreparationStage.operator.distance_binning.distance_binning" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>根据体素在空间中的距离，将体素划分到不同距离 bin 中。</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>voxel_coords</code></b>
+                  (<code><span title="torch.Tensor">Tensor</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>(M, 3)
+体素坐标索引 (ix, iy, iz)。</p>
+              </div>
+            </li>
+            <li>
+              <b><code>voxel_size</code></b>
+                  (<code><span title="torch.Tensor">Tensor</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>(3,)
+体素尺寸 [vx, vy, vz]。</p>
+              </div>
+            </li>
+            <li>
+              <b><code>point_cloud_range</code></b>
+                  (<code><span title="torch.Tensor">Tensor</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>(6,)
+点云范围 [x_min, y_min, z_min, x_max, y_max, z_max]。</p>
+              </div>
+            </li>
+            <li>
+              <b><code>bin_edges</code></b>
+                  (<code><span title="torch.Tensor">Tensor</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>(K,)
+距离分桶边界（递增）。</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>bin_ids</code></b>(                  <code><span title="torch.Tensor">Tensor</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>(M,)
+每个体素所属的距离 bin 编号，范围 [0, K]。</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+            <details class="quote">
+              <summary>Source code in <code>VoxelPreparationStage\operator\distance_binning.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@torch</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">custom_op</span><span class="p">(</span><span class="s2">&quot;virconv::distance_binning&quot;</span><span class="p">,</span> <span class="n">mutates_args</span><span class="o">=</span><span class="p">[])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">distance_binning</span><span class="p">(</span><span class="n">voxel_coords</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+                     <span class="n">voxel_size</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+                     <span class="n">point_cloud_range</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+                     <span class="n">bin_edges</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    根据体素在空间中的距离，将体素划分到不同距离 bin 中。</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        voxel_coords: (M, 3)</span>
+<span class="sd">            体素坐标索引 (ix, iy, iz)。</span>
+<span class="sd">        voxel_size: (3,)</span>
+<span class="sd">            体素尺寸 [vx, vy, vz]。</span>
+<span class="sd">        point_cloud_range: (6,)</span>
+<span class="sd">            点云范围 [x_min, y_min, z_min, x_max, y_max, z_max]。</span>
+<span class="sd">        bin_edges: (K,)</span>
+<span class="sd">            距离分桶边界（递增）。</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bin_ids: (M,)</span>
+<span class="sd">            每个体素所属的距离 bin 编号，范围 [0, K]。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">voxel_coords</span><span class="o">.</span><span class="n">ndim</span> <span class="o">!=</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">voxel_coords</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;voxel_coords must be (M,3), got </span><span class="si">{</span><span class="n">voxel_coords</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 统一 device / dtype</span>
+    <span class="n">device</span> <span class="o">=</span> <span class="n">voxel_coords</span><span class="o">.</span><span class="n">device</span>
+    <span class="n">voxel_size</span> <span class="o">=</span> <span class="n">voxel_size</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">point_cloud_range</span> <span class="o">=</span> <span class="n">point_cloud_range</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">bin_edges</span> <span class="o">=</span> <span class="n">bin_edges</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+    <span class="n">pc_min</span> <span class="o">=</span> <span class="n">point_cloud_range</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+
+    <span class="n">centers</span> <span class="o">=</span> <span class="p">(</span><span class="n">voxel_coords</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="n">voxel_size</span> <span class="o">+</span> <span class="n">pc_min</span>  <span class="c1"># (M,3)</span>
+    <span class="n">distances</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">centers</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># (M,)</span>
+
+    <span class="n">bin_ids</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">bucketize</span><span class="p">(</span><span class="n">distances</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">)</span>  <span class="c1"># (M,)</span>
+    <span class="k">return</span> <span class="n">bin_ids</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>  <span class="c1"># 避免 alias</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="文档首页"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../VirConvStage/" class="btn btn-neutral float-right" title="VirConvStage">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../VirConvStage/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

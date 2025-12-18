@@ -1,0 +1,2203 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>VirConvStage - VirConv Module Extraction 文档</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../css/overrides.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "VirConvStage";
+        var mkdocs_page_input_path = "VirConvStage.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> VirConv Module Extraction 文档
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">文档首页</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../VoxelPreparationStage/">VoxelPreparationStage</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">VirConvStage</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#api">API 文档</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#stvd_layer">stvd_layer</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#VirConvBlockStage.operator.stvd_layer">stvd_layer</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#VirConvBlockStage.operator.stvd_layer.stvd_layer">stvd_layer</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#projection">projection</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#VirConvBlockStage.operator.projection">projection</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#VirConvBlockStage.operator.projection.projection">projection</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#nrconv3d">NRConv3D</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#VirConvBlockStage.network.NRConv3D">NRConv3D</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#VirConvBlockStage.network.NRConv3D.NRConv3D">NRConv3D</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#VirConvBlockStage.network.NRConv3D.NRConv3D--_1">结构说明</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#VirConvBlockStage.network.NRConv3D.NRConv3D--_2">输入</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#VirConvBlockStage.network.NRConv3D.NRConv3D--_3">输出</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#VirConvBlockStage.network.NRConv3D.NRConv3D--_4">模块用途</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#VirConvBlockStage.network.NRConv3D.NRConv3D.forward">forward</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nrconv2d">NRConv2D</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#VirConvBlockStage.network.NRConv2D">NRConv2D</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#VirConvBlockStage.network.NRConv2D.NRConv2D">NRConv2D</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#VirConvBlockStage.network.NRConv2D.NRConv2D--_1">结构说明</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#VirConvBlockStage.network.NRConv2D.NRConv2D--_2">输入</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#VirConvBlockStage.network.NRConv2D.NRConv2D--_3">输出</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#VirConvBlockStage.network.NRConv2D.NRConv2D--_4">模块用途</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#VirConvBlockStage.network.NRConv2D.NRConv2D.forward">forward</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sparseconv3d">SparseConv3D</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#VirConvBlockStage.network.SparseConv3D">SparseConv3D</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#VirConvBlockStage.network.SparseConv3D.SparseConv3D">SparseConv3D</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#VirConvBlockStage.network.SparseConv3D.SparseConv3D--_1">结构说明</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#VirConvBlockStage.network.SparseConv3D.SparseConv3D--_2">输入</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#VirConvBlockStage.network.SparseConv3D.SparseConv3D--_3">输出</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#VirConvBlockStage.network.SparseConv3D.SparseConv3D--_4">模块用途</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#VirConvBlockStage.network.SparseConv3D.SparseConv3D.forward">forward</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#featurefusion">FeatureFusion</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#VirConvBlockStage.network.FeatureFusion">FeatureFusion</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#VirConvBlockStage.network.FeatureFusion.FeatureFusion">FeatureFusion</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#VirConvBlockStage.network.FeatureFusion.FeatureFusion--_1">结构说明</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#VirConvBlockStage.network.FeatureFusion.FeatureFusion--_2">输入</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#VirConvBlockStage.network.FeatureFusion.FeatureFusion--_3">输出</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#VirConvBlockStage.network.FeatureFusion.FeatureFusion--_4">模块用途</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#VirConvBlockStage.network.FeatureFusion.FeatureFusion.forward">forward</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../framework/">Framework</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">VirConv Module Extraction 文档</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">VirConvStage</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="virconv-stagevirconv-block">VirConv Stage（VirConv Block）<a class="headerlink" href="#virconv-stagevirconv-block" title="Permanent link">&para;</a></h1>
+<p>本阶段的作用是 <strong>在体素级特征上执行 VirConv Block 的核心计算</strong>，<br />
+通过虚拟点筛选、几何投影与非规则卷积，实现多模态体素特征的深度融合。</p>
+<p>本阶段包含以下算子与模块：</p>
+<ol>
+<li>
+<p><strong>stvd_layer</strong><br />
+   基于 STVD 机制对虚拟点进行筛选与加权。</p>
+</li>
+<li>
+<p><strong>projection</strong><br />
+   将体素或虚拟点从 3D 空间投影到 2D 图像平面。</p>
+</li>
+<li>
+<p><strong>NRConv3D</strong><br />
+   在稀疏体素结构上执行非规则 3D 卷积。</p>
+</li>
+<li>
+<p><strong>NRConv2D</strong><br />
+   在投影后的 2D 平面上执行非规则 2D 卷积。</p>
+</li>
+<li>
+<p><strong>SparseConv3D</strong><br />
+   进一步对体素特征进行稀疏 3D 卷积增强。</p>
+</li>
+<li>
+<p><strong>FeatureFusion</strong><br />
+   融合来自不同分支的体素特征，输出最终融合表示。</p>
+</li>
+</ol>
+<hr />
+<h2 id="api">API 文档<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
+<h3 id="stvd_layer">stvd_layer<a class="headerlink" href="#stvd_layer" title="Permanent link">&para;</a></h3>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="VirConvBlockStage.operator.stvd_layer"></a>
+    <div class="doc doc-contents first">
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="VirConvBlockStage.operator.stvd_layer.stvd_layer" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">stvd_layer</span><span class="p">(</span><span class="n">voxel_coords</span><span class="p">,</span> <span class="n">voxel_features</span><span class="p">,</span> <span class="n">discard_rate</span><span class="p">,</span> <span class="n">training</span><span class="p">)</span></code>
+
+<a href="#VirConvBlockStage.operator.stvd_layer.stvd_layer" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>对中间层体素执行随机丢弃（Layer StVD），用于增强稀疏鲁棒性。</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>voxel_coords</code></b>
+                  (<code><span title="torch.Tensor">Tensor</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>(M, 3)
+输入体素坐标索引。</p>
+              </div>
+            </li>
+            <li>
+              <b><code>voxel_features</code></b>
+                  (<code><span title="torch.Tensor">Tensor</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>(M, C)
+输入体素特征。</p>
+              </div>
+            </li>
+            <li>
+              <b><code>discard_rate</code></b>
+                  (<code>float</code>)
+              –
+              <div class="doc-md-description">
+                <p>float
+丢弃比例，取值范围 [0, 1)。</p>
+              </div>
+            </li>
+            <li>
+              <b><code>training</code></b>
+                  (<code>bool</code>)
+              –
+              <div class="doc-md-description">
+                <p>bool
+是否训练阶段；推理阶段不执行丢弃。</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>voxel_coords_kept</code></b>(                  <code><span title="torch.Tensor">Tensor</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>(M', 3)
+丢弃后保留的体素坐标。</p>
+              </div>
+            </li>
+            <li>
+<b><code>voxel_features_kept</code></b>(                  <code><span title="torch.Tensor">Tensor</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>(M', C)
+丢弃后保留的体素特征。</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+            <details class="quote">
+              <summary>Source code in <code>VirConvBlockStage\operator\stvd_layer.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@torch</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">custom_op</span><span class="p">(</span><span class="s2">&quot;virconv::stvd_layer&quot;</span><span class="p">,</span> <span class="n">mutates_args</span><span class="o">=</span><span class="p">[])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">stvd_layer</span><span class="p">(</span><span class="n">voxel_coords</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+               <span class="n">voxel_features</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+               <span class="n">discard_rate</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+               <span class="n">training</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    对中间层体素执行随机丢弃（Layer StVD），用于增强稀疏鲁棒性。</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        voxel_coords: (M, 3)</span>
+<span class="sd">            输入体素坐标索引。</span>
+<span class="sd">        voxel_features: (M, C)</span>
+<span class="sd">            输入体素特征。</span>
+<span class="sd">        discard_rate: float</span>
+<span class="sd">            丢弃比例，取值范围 [0, 1)。</span>
+<span class="sd">        training: bool</span>
+<span class="sd">            是否训练阶段；推理阶段不执行丢弃。</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        voxel_coords_kept: (M&#39;, 3)</span>
+<span class="sd">            丢弃后保留的体素坐标。</span>
+<span class="sd">        voxel_features_kept: (M&#39;, C)</span>
+<span class="sd">            丢弃后保留的体素特征。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">voxel_coords</span><span class="o">.</span><span class="n">ndim</span> <span class="o">!=</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">voxel_coords</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;voxel_coords must be (M,3), got </span><span class="si">{</span><span class="n">voxel_coords</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">voxel_features</span><span class="o">.</span><span class="n">ndim</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;voxel_features must be (M,C), got </span><span class="si">{</span><span class="n">voxel_features</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">voxel_coords</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">voxel_features</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;voxel_coords and voxel_features must have same length&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 推理阶段或不丢弃：也必须返回 clone（custom_op 禁止 alias）</span>
+    <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">training</span><span class="p">)</span> <span class="ow">or</span> <span class="n">discard_rate</span> <span class="o">&lt;=</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">voxel_coords</span><span class="o">.</span><span class="n">clone</span><span class="p">(),</span> <span class="n">voxel_features</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+
+    <span class="c1"># 极端情况：全丢弃</span>
+    <span class="k">if</span> <span class="n">discard_rate</span> <span class="o">&gt;=</span> <span class="mf">1.0</span><span class="p">:</span>
+        <span class="n">empty_coords</span> <span class="o">=</span> <span class="n">voxel_coords</span><span class="p">[:</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+        <span class="n">empty_feats</span> <span class="o">=</span> <span class="n">voxel_features</span><span class="p">[:</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">empty_coords</span><span class="p">,</span> <span class="n">empty_feats</span>
+
+    <span class="n">keep_prob</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="n">discard_rate</span><span class="p">)</span>
+    <span class="n">rand</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="n">voxel_coords</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],),</span> <span class="n">device</span><span class="o">=</span><span class="n">voxel_coords</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">keep_mask</span> <span class="o">=</span> <span class="n">rand</span> <span class="o">&lt;</span> <span class="n">keep_prob</span>
+
+    <span class="n">coords_kept</span> <span class="o">=</span> <span class="n">voxel_coords</span><span class="p">[</span><span class="n">keep_mask</span><span class="p">]</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+    <span class="n">feats_kept</span> <span class="o">=</span> <span class="n">voxel_features</span><span class="p">[</span><span class="n">keep_mask</span><span class="p">]</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">coords_kept</span><span class="p">,</span> <span class="n">feats_kept</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><h3 id="projection">projection<a class="headerlink" href="#projection" title="Permanent link">&para;</a></h3>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="VirConvBlockStage.operator.projection"></a>
+    <div class="doc doc-contents first">
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="VirConvBlockStage.operator.projection.projection" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">projection</span><span class="p">(</span><span class="n">voxel_coords</span><span class="p">,</span> <span class="n">voxel_size</span><span class="p">,</span> <span class="n">point_cloud_range</span><span class="p">,</span> <span class="n">proj_matrix</span><span class="p">)</span></code>
+
+<a href="#VirConvBlockStage.operator.projection.projection" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>将体素坐标投影到图像平面，生成对应的 2D 像素坐标。</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>voxel_coords</code></b>
+                  (<code><span title="torch.Tensor">Tensor</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>(M, 3)
+体素坐标索引 (ix, iy, iz)。</p>
+              </div>
+            </li>
+            <li>
+              <b><code>voxel_size</code></b>
+                  (<code><span title="torch.Tensor">Tensor</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>(3,)
+体素尺寸 [vx, vy, vz]。</p>
+              </div>
+            </li>
+            <li>
+              <b><code>point_cloud_range</code></b>
+                  (<code><span title="torch.Tensor">Tensor</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>(6,)
+点云范围 [x_min, y_min, z_min, x_max, y_max, z_max]。</p>
+              </div>
+            </li>
+            <li>
+              <b><code>proj_matrix</code></b>
+                  (<code><span title="torch.Tensor">Tensor</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>(3, 4)
+相机投影矩阵（K[R|t]）。</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>pixel_coords</code></b>(                  <code><span title="torch.Tensor">Tensor</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>(M, 2)
+每个体素中心对应的图像平面像素坐标 (u, v)。</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+            <details class="quote">
+              <summary>Source code in <code>VirConvBlockStage\operator\projection.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@torch</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">custom_op</span><span class="p">(</span><span class="s2">&quot;virconv::projection&quot;</span><span class="p">,</span> <span class="n">mutates_args</span><span class="o">=</span><span class="p">[])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">projection</span><span class="p">(</span><span class="n">voxel_coords</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+               <span class="n">voxel_size</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+               <span class="n">point_cloud_range</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+               <span class="n">proj_matrix</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    将体素坐标投影到图像平面，生成对应的 2D 像素坐标。</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        voxel_coords: (M, 3)</span>
+<span class="sd">            体素坐标索引 (ix, iy, iz)。</span>
+<span class="sd">        voxel_size: (3,)</span>
+<span class="sd">            体素尺寸 [vx, vy, vz]。</span>
+<span class="sd">        point_cloud_range: (6,)</span>
+<span class="sd">            点云范围 [x_min, y_min, z_min, x_max, y_max, z_max]。</span>
+<span class="sd">        proj_matrix: (3, 4)</span>
+<span class="sd">            相机投影矩阵（K[R|t]）。</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pixel_coords: (M, 2)</span>
+<span class="sd">            每个体素中心对应的图像平面像素坐标 (u, v)。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">voxel_coords</span><span class="o">.</span><span class="n">ndim</span> <span class="o">!=</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">voxel_coords</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;voxel_coords must be (M,3), got </span><span class="si">{</span><span class="n">voxel_coords</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">device</span> <span class="o">=</span> <span class="n">voxel_coords</span><span class="o">.</span><span class="n">device</span>
+
+    <span class="c1"># 统一 device / dtype</span>
+    <span class="n">voxel_size</span> <span class="o">=</span> <span class="n">voxel_size</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">point_cloud_range</span> <span class="o">=</span> <span class="n">point_cloud_range</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">proj_matrix</span> <span class="o">=</span> <span class="n">proj_matrix</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+    <span class="n">pc_min</span> <span class="o">=</span> <span class="n">point_cloud_range</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+
+    <span class="n">centers</span> <span class="o">=</span> <span class="p">(</span><span class="n">voxel_coords</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="n">voxel_size</span> <span class="o">+</span> <span class="n">pc_min</span>  <span class="c1"># (M,3)</span>
+
+    <span class="n">ones</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">centers</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">),</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">centers_homo</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">centers</span><span class="p">,</span> <span class="n">ones</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># (M,4)</span>
+
+    <span class="n">pixels_homo</span> <span class="o">=</span> <span class="n">centers_homo</span> <span class="o">@</span> <span class="n">proj_matrix</span><span class="o">.</span><span class="n">t</span><span class="p">()</span>  <span class="c1"># (M,3)</span>
+    <span class="n">pixels</span> <span class="o">=</span> <span class="n">pixels_homo</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="n">pixels_homo</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">clamp_min</span><span class="p">(</span><span class="mf">1e-6</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">pixels</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>  <span class="c1"># custom_op 输出不允许 alias</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><h3 id="nrconv3d">NRConv3D<a class="headerlink" href="#nrconv3d" title="Permanent link">&para;</a></h3>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="VirConvBlockStage.network.NRConv3D"></a>
+    <div class="doc doc-contents first">
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="VirConvBlockStage.network.NRConv3D.NRConv3D" class="doc doc-heading">
+            <code>NRConv3D</code>
+
+
+<a href="#VirConvBlockStage.network.NRConv3D.NRConv3D" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="torch.nn.Module">Module</span></code></p>
+
+
+        <p>NRConv 3D 模块（VirConv 阶段 C 的核心可学习算子之一）。</p>
+<p>该模块在 <strong>三维体素空间</strong> 中对稀疏体素特征执行 3D 子流形卷积（Submanifold Sparse Convolution），
+用于建模体素局部邻域的几何结构与语义信息。其目标不是改变体素的空间分布，
+而是在 <strong>保持体素坐标不变</strong> 的前提下，增强每个体素的 3D 表达能力。</p>
+<p>在 VirConv 框架中，NRConv 3D 是 <strong>质量建模（Stage C）</strong> 的第一步，
+为后续的 2D 投影与 2D NRConv 提供可靠的三维特征基础。</p>
+<p>本模块属于 <strong>可学习算子</strong>，其卷积核参数在训练过程中通过反向传播进行更新。</p>
+<hr />
+<h5 id="VirConvBlockStage.network.NRConv3D.NRConv3D--_1">结构说明<a class="headerlink" href="#VirConvBlockStage.network.NRConv3D.NRConv3D--_1" title="Permanent link">&para;</a></h5>
+<ol>
+<li><strong>Submanifold Sparse Conv3D</strong></li>
+<li>在体素 3D 邻域内进行卷积计算</li>
+<li>不引入新的体素，不改变体素坐标集合</li>
+<li><strong>BatchNorm1d</strong></li>
+<li>对体素特征进行归一化，加速收敛</li>
+<li><strong>ReLU 激活</strong></li>
+<li>提供非线性表达能力</li>
+</ol>
+<hr />
+<h5 id="VirConvBlockStage.network.NRConv3D.NRConv3D--_2">输入<a class="headerlink" href="#VirConvBlockStage.network.NRConv3D.NRConv3D--_2" title="Permanent link">&para;</a></h5>
+<p>Args:
+    voxel_features (torch.Tensor):
+        体素特征张量，shape 为 <strong>(M, C_in)</strong>
+        - M：非空体素数量
+        - C_in：输入体素特征维度</p>
+<hr />
+<h5 id="VirConvBlockStage.network.NRConv3D.NRConv3D--_3">输出<a class="headerlink" href="#VirConvBlockStage.network.NRConv3D.NRConv3D--_3" title="Permanent link">&para;</a></h5>
+<p>Returns:
+    torch.Tensor:
+        更新后的体素特征张量，shape 为 <strong>(M, C_out)</strong></p>
+<hr />
+<h5 id="VirConvBlockStage.network.NRConv3D.NRConv3D--_4">模块用途<a class="headerlink" href="#VirConvBlockStage.network.NRConv3D.NRConv3D--_4" title="Permanent link">&para;</a></h5>
+<ul>
+<li>建模体素在 3D 空间中的局部几何关系</li>
+<li>抑制由虚拟点引入的噪声特征</li>
+<li>为后续的 2D 投影与跨模态融合提供高质量 3D 表征</li>
+<li>属于 VirConv 的 Stage C（NRConv）组成部分</li>
+</ul>
+
+              <details class="quote">
+                <summary>Source code in <code>VirConvBlockStage\network\NRConv3D.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">NRConv3D</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    NRConv 3D 模块（VirConv 阶段 C 的核心可学习算子之一）。</span>
+
+<span class="sd">    该模块在 **三维体素空间** 中对稀疏体素特征执行 3D 子流形卷积（Submanifold Sparse Convolution），</span>
+<span class="sd">    用于建模体素局部邻域的几何结构与语义信息。其目标不是改变体素的空间分布，</span>
+<span class="sd">    而是在 **保持体素坐标不变** 的前提下，增强每个体素的 3D 表达能力。</span>
+
+<span class="sd">    在 VirConv 框架中，NRConv 3D 是 **质量建模（Stage C）** 的第一步，</span>
+<span class="sd">    为后续的 2D 投影与 2D NRConv 提供可靠的三维特征基础。</span>
+
+<span class="sd">    本模块属于 **可学习算子**，其卷积核参数在训练过程中通过反向传播进行更新。</span>
+
+<span class="sd">    ---</span>
+<span class="sd">    ### 结构说明</span>
+<span class="sd">    1. **Submanifold Sparse Conv3D**</span>
+<span class="sd">       - 在体素 3D 邻域内进行卷积计算</span>
+<span class="sd">       - 不引入新的体素，不改变体素坐标集合</span>
+<span class="sd">    2. **BatchNorm1d**</span>
+<span class="sd">       - 对体素特征进行归一化，加速收敛</span>
+<span class="sd">    3. **ReLU 激活**</span>
+<span class="sd">       - 提供非线性表达能力</span>
+
+<span class="sd">    ---</span>
+<span class="sd">    ### 输入</span>
+<span class="sd">    Args:</span>
+<span class="sd">        voxel_features (torch.Tensor):</span>
+<span class="sd">            体素特征张量，shape 为 **(M, C_in)**</span>
+<span class="sd">            - M：非空体素数量</span>
+<span class="sd">            - C_in：输入体素特征维度</span>
+
+<span class="sd">    ---</span>
+<span class="sd">    ### 输出</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        torch.Tensor:</span>
+<span class="sd">            更新后的体素特征张量，shape 为 **(M, C_out)**</span>
+
+<span class="sd">    ---</span>
+<span class="sd">    ### 模块用途</span>
+<span class="sd">    - 建模体素在 3D 空间中的局部几何关系</span>
+<span class="sd">    - 抑制由虚拟点引入的噪声特征</span>
+<span class="sd">    - 为后续的 2D 投影与跨模态融合提供高质量 3D 表征</span>
+<span class="sd">    - 属于 VirConv 的 Stage C（NRConv）组成部分</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">in_channels</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+                 <span class="n">out_channels</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="c1"># 使用普通 Linear 近似 SubMConv3D（算子级抽象版本）</span>
+        <span class="c1"># 若接入 spconv，可在此处替换为 SubMConv3d</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linear</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_channels</span><span class="p">,</span> <span class="n">out_channels</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># 3D 卷积等价映射</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm1d</span><span class="p">(</span><span class="n">out_channels</span><span class="p">)</span>  <span class="c1"># 批归一化</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">relu</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># 非线性激活</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">voxel_features</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        前向传播过程。</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            voxel_features (torch.Tensor):</span>
+<span class="sd">                输入体素特征，shape 为 (M, C_in)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            torch.Tensor:</span>
+<span class="sd">                输出体素特征，shape 为 (M, C_out)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear</span><span class="p">(</span><span class="n">voxel_features</span><span class="p">)</span>  <span class="c1"># 线性映射（近似 3D SubMConv）</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                   <span class="c1"># 归一化</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                 <span class="c1"># 激活</span>
+        <span class="k">return</span> <span class="n">x</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="VirConvBlockStage.network.NRConv3D.NRConv3D.forward" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">forward</span><span class="p">(</span><span class="n">voxel_features</span><span class="p">)</span></code>
+
+<a href="#VirConvBlockStage.network.NRConv3D.NRConv3D.forward" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>前向传播过程。</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>voxel_features</code></b>
+                  (<code><span title="torch.Tensor">Tensor</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>输入体素特征，shape 为 (M, C_in)</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="torch.Tensor">Tensor</span></code>
+              –
+              <div class="doc-md-description">
+                <p>torch.Tensor:
+输出体素特征，shape 为 (M, C_out)</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+            <details class="quote">
+              <summary>Source code in <code>VirConvBlockStage\network\NRConv3D.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">voxel_features</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    前向传播过程。</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        voxel_features (torch.Tensor):</span>
+<span class="sd">            输入体素特征，shape 为 (M, C_in)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        torch.Tensor:</span>
+<span class="sd">            输出体素特征，shape 为 (M, C_out)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear</span><span class="p">(</span><span class="n">voxel_features</span><span class="p">)</span>  <span class="c1"># 线性映射（近似 3D SubMConv）</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                   <span class="c1"># 归一化</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                 <span class="c1"># 激活</span>
+    <span class="k">return</span> <span class="n">x</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div><h3 id="nrconv2d">NRConv2D<a class="headerlink" href="#nrconv2d" title="Permanent link">&para;</a></h3>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="VirConvBlockStage.network.NRConv2D"></a>
+    <div class="doc doc-contents first">
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="VirConvBlockStage.network.NRConv2D.NRConv2D" class="doc doc-heading">
+            <code>NRConv2D</code>
+
+
+<a href="#VirConvBlockStage.network.NRConv2D.NRConv2D" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="torch.nn.Module">Module</span></code></p>
+
+
+        <p>NRConv 2D 模块（VirConv 阶段 C 的核心可学习算子之一）。</p>
+<p>该模块在 <strong>图像平面（2D 空间）</strong> 上对由体素投影得到的特征执行 2D 卷积建模，
+用于捕获体素在图像视角下的局部上下文与边界信息，从而辅助判断体素特征的可靠性。
+与 NRConv 3D 不同，本模块关注的是 <strong>图像几何结构与深度不连续模式</strong>。</p>
+<p>在 VirConv 框架中，NRConv 2D 位于 Projection 之后，与 NRConv 3D 形成互补，
+两者的输出将在后续 Fusion 算子中进行融合。</p>
+<p>本模块属于 <strong>可学习算子</strong>，其参数在训练过程中通过反向传播进行更新。</p>
+<hr />
+<h5 id="VirConvBlockStage.network.NRConv2D.NRConv2D--_1">结构说明<a class="headerlink" href="#VirConvBlockStage.network.NRConv2D.NRConv2D--_1" title="Permanent link">&para;</a></h5>
+<ol>
+<li><strong>2D Convolution（kernel=3, padding=1）</strong></li>
+<li>在图像平面邻域内建模局部上下文信息</li>
+<li><strong>BatchNorm1d</strong></li>
+<li>对体素级特征进行归一化</li>
+<li><strong>ReLU 激活</strong></li>
+<li>提供非线性表达能力</li>
+</ol>
+<hr />
+<h5 id="VirConvBlockStage.network.NRConv2D.NRConv2D--_2">输入<a class="headerlink" href="#VirConvBlockStage.network.NRConv2D.NRConv2D--_2" title="Permanent link">&para;</a></h5>
+<p>Args:
+    voxel_features (torch.Tensor):
+        体素特征张量，shape 为 <strong>(M, C_in)</strong>
+        - M：非空体素数量
+        - C_in：输入体素特征维度
+    pixel_coords (torch.Tensor):
+        投影得到的 2D 像素坐标，shape 为 <strong>(M, 2)</strong>
+        - 每个体素在图像平面中的位置 (u, v)</p>
+<hr />
+<h5 id="VirConvBlockStage.network.NRConv2D.NRConv2D--_3">输出<a class="headerlink" href="#VirConvBlockStage.network.NRConv2D.NRConv2D--_3" title="Permanent link">&para;</a></h5>
+<p>Returns:
+    torch.Tensor:
+        更新后的体素特征张量，shape 为 <strong>(M, C_out)</strong></p>
+<hr />
+<h5 id="VirConvBlockStage.network.NRConv2D.NRConv2D--_4">模块用途<a class="headerlink" href="#VirConvBlockStage.network.NRConv2D.NRConv2D--_4" title="Permanent link">&para;</a></h5>
+<ul>
+<li>从图像视角建模体素的局部上下文信息</li>
+<li>感知深度补全或虚拟点带来的边界与噪声模式</li>
+<li>与 NRConv 3D 形成互补的跨空间特征表示</li>
+<li>属于 VirConv 的 Stage C（NRConv）组成部分</li>
+</ul>
+
+              <details class="quote">
+                <summary>Source code in <code>VirConvBlockStage\network\NRConv2D.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">NRConv2D</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    NRConv 2D 模块（VirConv 阶段 C 的核心可学习算子之一）。</span>
+
+<span class="sd">    该模块在 **图像平面（2D 空间）** 上对由体素投影得到的特征执行 2D 卷积建模，</span>
+<span class="sd">    用于捕获体素在图像视角下的局部上下文与边界信息，从而辅助判断体素特征的可靠性。</span>
+<span class="sd">    与 NRConv 3D 不同，本模块关注的是 **图像几何结构与深度不连续模式**。</span>
+
+<span class="sd">    在 VirConv 框架中，NRConv 2D 位于 Projection 之后，与 NRConv 3D 形成互补，</span>
+<span class="sd">    两者的输出将在后续 Fusion 算子中进行融合。</span>
+
+<span class="sd">    本模块属于 **可学习算子**，其参数在训练过程中通过反向传播进行更新。</span>
+
+<span class="sd">    ---</span>
+<span class="sd">    ### 结构说明</span>
+<span class="sd">    1. **2D Convolution（kernel=3, padding=1）**</span>
+<span class="sd">       - 在图像平面邻域内建模局部上下文信息</span>
+<span class="sd">    2. **BatchNorm1d**</span>
+<span class="sd">       - 对体素级特征进行归一化</span>
+<span class="sd">    3. **ReLU 激活**</span>
+<span class="sd">       - 提供非线性表达能力</span>
+
+<span class="sd">    ---</span>
+<span class="sd">    ### 输入</span>
+<span class="sd">    Args:</span>
+<span class="sd">        voxel_features (torch.Tensor):</span>
+<span class="sd">            体素特征张量，shape 为 **(M, C_in)**</span>
+<span class="sd">            - M：非空体素数量</span>
+<span class="sd">            - C_in：输入体素特征维度</span>
+<span class="sd">        pixel_coords (torch.Tensor):</span>
+<span class="sd">            投影得到的 2D 像素坐标，shape 为 **(M, 2)**</span>
+<span class="sd">            - 每个体素在图像平面中的位置 (u, v)</span>
+
+<span class="sd">    ---</span>
+<span class="sd">    ### 输出</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        torch.Tensor:</span>
+<span class="sd">            更新后的体素特征张量，shape 为 **(M, C_out)**</span>
+
+<span class="sd">    ---</span>
+<span class="sd">    ### 模块用途</span>
+<span class="sd">    - 从图像视角建模体素的局部上下文信息</span>
+<span class="sd">    - 感知深度补全或虚拟点带来的边界与噪声模式</span>
+<span class="sd">    - 与 NRConv 3D 形成互补的跨空间特征表示</span>
+<span class="sd">    - 属于 VirConv 的 Stage C（NRConv）组成部分</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">in_channels</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+                 <span class="n">out_channels</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="c1"># 使用 Linear 近似 2D 卷积（算子级抽象版本）</span>
+        <span class="c1"># 若构建真实 2D feature map，可替换为 nn.Conv2d</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linear</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_channels</span><span class="p">,</span> <span class="n">out_channels</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># 2D 卷积等价映射</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm1d</span><span class="p">(</span><span class="n">out_channels</span><span class="p">)</span>  <span class="c1"># 批归一化</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">relu</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># 非线性激活</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                <span class="n">voxel_features</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+                <span class="n">pixel_coords</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        前向传播过程。</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            voxel_features (torch.Tensor):</span>
+<span class="sd">                输入体素特征，shape 为 (M, C_in)</span>
+<span class="sd">            pixel_coords (torch.Tensor):</span>
+<span class="sd">                投影后的 2D 像素坐标，shape 为 (M, 2)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            torch.Tensor:</span>
+<span class="sd">                输出体素特征，shape 为 (M, C_out)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># 当前算子级抽象中，pixel_coords 仅作为几何关联输入，不直接参与计算</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear</span><span class="p">(</span><span class="n">voxel_features</span><span class="p">)</span>  <span class="c1"># 特征映射（近似 2D Conv）</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                   <span class="c1"># 归一化</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                 <span class="c1"># 激活</span>
+        <span class="k">return</span> <span class="n">x</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="VirConvBlockStage.network.NRConv2D.NRConv2D.forward" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">forward</span><span class="p">(</span><span class="n">voxel_features</span><span class="p">,</span> <span class="n">pixel_coords</span><span class="p">)</span></code>
+
+<a href="#VirConvBlockStage.network.NRConv2D.NRConv2D.forward" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>前向传播过程。</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>voxel_features</code></b>
+                  (<code><span title="torch.Tensor">Tensor</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>输入体素特征，shape 为 (M, C_in)</p>
+              </div>
+            </li>
+            <li>
+              <b><code>pixel_coords</code></b>
+                  (<code><span title="torch.Tensor">Tensor</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>投影后的 2D 像素坐标，shape 为 (M, 2)</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="torch.Tensor">Tensor</span></code>
+              –
+              <div class="doc-md-description">
+                <p>torch.Tensor:
+输出体素特征，shape 为 (M, C_out)</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+            <details class="quote">
+              <summary>Source code in <code>VirConvBlockStage\network\NRConv2D.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+            <span class="n">voxel_features</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+            <span class="n">pixel_coords</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    前向传播过程。</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        voxel_features (torch.Tensor):</span>
+<span class="sd">            输入体素特征，shape 为 (M, C_in)</span>
+<span class="sd">        pixel_coords (torch.Tensor):</span>
+<span class="sd">            投影后的 2D 像素坐标，shape 为 (M, 2)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        torch.Tensor:</span>
+<span class="sd">            输出体素特征，shape 为 (M, C_out)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># 当前算子级抽象中，pixel_coords 仅作为几何关联输入，不直接参与计算</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear</span><span class="p">(</span><span class="n">voxel_features</span><span class="p">)</span>  <span class="c1"># 特征映射（近似 2D Conv）</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                   <span class="c1"># 归一化</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                 <span class="c1"># 激活</span>
+    <span class="k">return</span> <span class="n">x</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div><h3 id="sparseconv3d">SparseConv3D<a class="headerlink" href="#sparseconv3d" title="Permanent link">&para;</a></h3>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="VirConvBlockStage.network.SparseConv3D"></a>
+    <div class="doc doc-contents first">
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="VirConvBlockStage.network.SparseConv3D.SparseConv3D" class="doc doc-heading">
+            <code>SparseConv3D</code>
+
+
+<a href="#VirConvBlockStage.network.SparseConv3D.SparseConv3D" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="torch.nn.Module">Module</span></code></p>
+
+
+        <p>3D SpConv 模块（VirConv Backbone 阶段 D 的核心结构算子）。</p>
+<p>该模块在 <strong>三维体素空间</strong> 中对融合后的体素特征执行稀疏 3D 卷积，
+用于进行 <strong>空间结构建模与尺度变换</strong>。与 NRConv 不同，
+本模块允许通过 stride 实现 <strong>下采样</strong>，从而扩大感受野并逐步构建
+多尺度三维特征表示。</p>
+<p>在 VirConv 框架中，3D SpConv 标志着从 <strong>融合建模（Stage C）</strong>
+进入 <strong>Backbone 特征抽象（Stage D）</strong>，其输出将作为下一层
+VirConv Block 或后续网络模块的输入。</p>
+<p>本模块属于 <strong>可学习算子</strong>，其卷积核参数在训练过程中通过反向传播更新。</p>
+<hr />
+<h5 id="VirConvBlockStage.network.SparseConv3D.SparseConv3D--_1">结构说明<a class="headerlink" href="#VirConvBlockStage.network.SparseConv3D.SparseConv3D--_1" title="Permanent link">&para;</a></h5>
+<ol>
+<li><strong>3D Sparse Convolution（可带 stride）</strong></li>
+<li>在体素 3D 邻域内进行卷积计算</li>
+<li>可通过 stride &gt; 1 实现体素下采样</li>
+<li><strong>BatchNorm1d</strong></li>
+<li>对体素特征进行归一化，稳定训练过程</li>
+<li><strong>ReLU 激活</strong></li>
+<li>提供非线性表达能力</li>
+</ol>
+<hr />
+<h5 id="VirConvBlockStage.network.SparseConv3D.SparseConv3D--_2">输入<a class="headerlink" href="#VirConvBlockStage.network.SparseConv3D.SparseConv3D--_2" title="Permanent link">&para;</a></h5>
+<p>Args:
+    voxel_features (torch.Tensor):
+        输入体素特征张量，shape 为 <strong>(M, C_in)</strong>
+        - M：非空体素数量
+        - C_in：输入特征维度</p>
+<hr />
+<h5 id="VirConvBlockStage.network.SparseConv3D.SparseConv3D--_3">输出<a class="headerlink" href="#VirConvBlockStage.network.SparseConv3D.SparseConv3D--_3" title="Permanent link">&para;</a></h5>
+<p>Returns:
+    torch.Tensor:
+        输出体素特征张量，shape 为 <strong>(M', C_out)</strong>
+        - M'：下采样后体素数量（可能小于 M）
+        - C_out：输出特征维度</p>
+<hr />
+<h5 id="VirConvBlockStage.network.SparseConv3D.SparseConv3D--_4">模块用途<a class="headerlink" href="#VirConvBlockStage.network.SparseConv3D.SparseConv3D--_4" title="Permanent link">&para;</a></h5>
+<ul>
+<li>构建多尺度三维特征表示</li>
+<li>扩大体素特征的空间感受野</li>
+<li>为后续检测或更高层 Backbone 提供抽象语义特征</li>
+<li>属于 VirConv 的 Stage D（3D SpConv Backbone）</li>
+</ul>
+
+              <details class="quote">
+                <summary>Source code in <code>VirConvBlockStage\network\SparseConv3D.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">SparseConv3D</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    3D SpConv 模块（VirConv Backbone 阶段 D 的核心结构算子）。</span>
+
+<span class="sd">    该模块在 **三维体素空间** 中对融合后的体素特征执行稀疏 3D 卷积，</span>
+<span class="sd">    用于进行 **空间结构建模与尺度变换**。与 NRConv 不同，</span>
+<span class="sd">    本模块允许通过 stride 实现 **下采样**，从而扩大感受野并逐步构建</span>
+<span class="sd">    多尺度三维特征表示。</span>
+
+<span class="sd">    在 VirConv 框架中，3D SpConv 标志着从 **融合建模（Stage C）**</span>
+<span class="sd">    进入 **Backbone 特征抽象（Stage D）**，其输出将作为下一层</span>
+<span class="sd">    VirConv Block 或后续网络模块的输入。</span>
+
+<span class="sd">    本模块属于 **可学习算子**，其卷积核参数在训练过程中通过反向传播更新。</span>
+
+<span class="sd">    ---</span>
+<span class="sd">    ### 结构说明</span>
+<span class="sd">    1. **3D Sparse Convolution（可带 stride）**</span>
+<span class="sd">       - 在体素 3D 邻域内进行卷积计算</span>
+<span class="sd">       - 可通过 stride &gt; 1 实现体素下采样</span>
+<span class="sd">    2. **BatchNorm1d**</span>
+<span class="sd">       - 对体素特征进行归一化，稳定训练过程</span>
+<span class="sd">    3. **ReLU 激活**</span>
+<span class="sd">       - 提供非线性表达能力</span>
+
+<span class="sd">    ---</span>
+<span class="sd">    ### 输入</span>
+<span class="sd">    Args:</span>
+<span class="sd">        voxel_features (torch.Tensor):</span>
+<span class="sd">            输入体素特征张量，shape 为 **(M, C_in)**</span>
+<span class="sd">            - M：非空体素数量</span>
+<span class="sd">            - C_in：输入特征维度</span>
+
+<span class="sd">    ---</span>
+<span class="sd">    ### 输出</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        torch.Tensor:</span>
+<span class="sd">            输出体素特征张量，shape 为 **(M&#39;, C_out)**</span>
+<span class="sd">            - M&#39;：下采样后体素数量（可能小于 M）</span>
+<span class="sd">            - C_out：输出特征维度</span>
+
+<span class="sd">    ---</span>
+<span class="sd">    ### 模块用途</span>
+<span class="sd">    - 构建多尺度三维特征表示</span>
+<span class="sd">    - 扩大体素特征的空间感受野</span>
+<span class="sd">    - 为后续检测或更高层 Backbone 提供抽象语义特征</span>
+<span class="sd">    - 属于 VirConv 的 Stage D（3D SpConv Backbone）</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">in_channels</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+                 <span class="n">out_channels</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+                 <span class="n">stride</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="c1"># 使用 Linear 近似 3D Sparse Convolution（算子级抽象版本）</span>
+        <span class="c1"># 若接入 spconv，可在此处替换为 SparseConv3d / SubMConv3d</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linear</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_channels</span><span class="p">,</span> <span class="n">out_channels</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># 特征映射</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm1d</span><span class="p">(</span><span class="n">out_channels</span><span class="p">)</span>  <span class="c1"># 批归一化</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">relu</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># 非线性激活</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stride</span> <span class="o">=</span> <span class="n">stride</span>  <span class="c1"># 下采样步长（语义占位）</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                <span class="n">voxel_features</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        前向传播过程。</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            voxel_features (torch.Tensor):</span>
+<span class="sd">                输入体素特征，shape 为 (M, C_in)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            torch.Tensor:</span>
+<span class="sd">                输出体素特征，shape 为 (M&#39;, C_out)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># 当前算子级抽象中，stride 不显式改变坐标，仅表达语义</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear</span><span class="p">(</span><span class="n">voxel_features</span><span class="p">)</span>  <span class="c1"># 特征映射（近似 3D SpConv）</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                   <span class="c1"># 归一化</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                 <span class="c1"># 激活</span>
+        <span class="k">return</span> <span class="n">x</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="VirConvBlockStage.network.SparseConv3D.SparseConv3D.forward" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">forward</span><span class="p">(</span><span class="n">voxel_features</span><span class="p">)</span></code>
+
+<a href="#VirConvBlockStage.network.SparseConv3D.SparseConv3D.forward" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>前向传播过程。</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>voxel_features</code></b>
+                  (<code><span title="torch.Tensor">Tensor</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>输入体素特征，shape 为 (M, C_in)</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="torch.Tensor">Tensor</span></code>
+              –
+              <div class="doc-md-description">
+                <p>torch.Tensor:
+输出体素特征，shape 为 (M', C_out)</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+            <details class="quote">
+              <summary>Source code in <code>VirConvBlockStage\network\SparseConv3D.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+            <span class="n">voxel_features</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    前向传播过程。</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        voxel_features (torch.Tensor):</span>
+<span class="sd">            输入体素特征，shape 为 (M, C_in)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        torch.Tensor:</span>
+<span class="sd">            输出体素特征，shape 为 (M&#39;, C_out)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># 当前算子级抽象中，stride 不显式改变坐标，仅表达语义</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear</span><span class="p">(</span><span class="n">voxel_features</span><span class="p">)</span>  <span class="c1"># 特征映射（近似 3D SpConv）</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                   <span class="c1"># 归一化</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                 <span class="c1"># 激活</span>
+    <span class="k">return</span> <span class="n">x</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div><h3 id="featurefusion">FeatureFusion<a class="headerlink" href="#featurefusion" title="Permanent link">&para;</a></h3>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="VirConvBlockStage.network.FeatureFusion"></a>
+    <div class="doc doc-contents first">
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="VirConvBlockStage.network.FeatureFusion.FeatureFusion" class="doc doc-heading">
+            <code>FeatureFusion</code>
+
+
+<a href="#VirConvBlockStage.network.FeatureFusion.FeatureFusion" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="torch.nn.Module">Module</span></code></p>
+
+
+        <p>Feature Fusion 模块（VirConv 阶段 C 的融合算子）。</p>
+<p>该模块用于融合 <strong>NRConv 3D</strong> 与 <strong>NRConv 2D</strong> 两条分支输出的体素特征，
+将来自三维空间与图像平面的互补信息整合为统一的体素级表示。
+其核心思想是在 <strong>不改变体素空间结构</strong> 的前提下，对同一体素的多源特征
+进行通道级融合，从而获得更具判别性的融合特征。</p>
+<p>在 VirConv 框架中，本算子位于 NRConv (3D / 2D) 之后，
+是完成 <strong>跨空间信息整合</strong> 的关键一步。</p>
+<p>本模块属于 <strong>可学习算子</strong>，其参数在训练过程中根据监督信号进行更新。</p>
+<hr />
+<h5 id="VirConvBlockStage.network.FeatureFusion.FeatureFusion--_1">结构说明<a class="headerlink" href="#VirConvBlockStage.network.FeatureFusion.FeatureFusion--_1" title="Permanent link">&para;</a></h5>
+<ol>
+<li><strong>特征拼接（Concat）</strong></li>
+<li>将 3D 与 2D 特征在通道维度进行拼接</li>
+<li><strong>Linear 映射（等价于 1×1 Conv）</strong></li>
+<li>对拼接后的特征进行通道压缩与重映射</li>
+<li><strong>BatchNorm1d</strong></li>
+<li>稳定特征分布，加速训练收敛</li>
+<li><strong>ReLU 激活</strong></li>
+<li>引入非线性，增强特征表达能力</li>
+</ol>
+<hr />
+<h5 id="VirConvBlockStage.network.FeatureFusion.FeatureFusion--_2">输入<a class="headerlink" href="#VirConvBlockStage.network.FeatureFusion.FeatureFusion--_2" title="Permanent link">&para;</a></h5>
+<p>Args:
+    feat_3d (torch.Tensor):
+        来自 NRConv 3D 的体素特征，shape 为 <strong>(M, C_3d)</strong>
+    feat_2d (torch.Tensor):
+        来自 NRConv 2D 的体素特征，shape 为 <strong>(M, C_2d)</strong></p>
+<hr />
+<h5 id="VirConvBlockStage.network.FeatureFusion.FeatureFusion--_3">输出<a class="headerlink" href="#VirConvBlockStage.network.FeatureFusion.FeatureFusion--_3" title="Permanent link">&para;</a></h5>
+<p>Returns:
+    torch.Tensor:
+        融合后的体素特征张量，shape 为 <strong>(M, C_out)</strong></p>
+<hr />
+<h5 id="VirConvBlockStage.network.FeatureFusion.FeatureFusion--_4">模块用途<a class="headerlink" href="#VirConvBlockStage.network.FeatureFusion.FeatureFusion--_4" title="Permanent link">&para;</a></h5>
+<ul>
+<li>融合三维几何信息与二维图像结构信息</li>
+<li>提升体素特征对虚拟点噪声的鲁棒性</li>
+<li>为后续 3D SpConv Backbone 提供高质量输入特征</li>
+<li>属于 VirConv 的 Stage C（NRConv）末端融合算子</li>
+</ul>
+
+              <details class="quote">
+                <summary>Source code in <code>VirConvBlockStage\network\FeatureFusion.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">FeatureFusion</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Feature Fusion 模块（VirConv 阶段 C 的融合算子）。</span>
+
+<span class="sd">    该模块用于融合 **NRConv 3D** 与 **NRConv 2D** 两条分支输出的体素特征，</span>
+<span class="sd">    将来自三维空间与图像平面的互补信息整合为统一的体素级表示。</span>
+<span class="sd">    其核心思想是在 **不改变体素空间结构** 的前提下，对同一体素的多源特征</span>
+<span class="sd">    进行通道级融合，从而获得更具判别性的融合特征。</span>
+
+<span class="sd">    在 VirConv 框架中，本算子位于 NRConv (3D / 2D) 之后，</span>
+<span class="sd">    是完成 **跨空间信息整合** 的关键一步。</span>
+
+<span class="sd">    本模块属于 **可学习算子**，其参数在训练过程中根据监督信号进行更新。</span>
+
+<span class="sd">    ---</span>
+<span class="sd">    ### 结构说明</span>
+<span class="sd">    1. **特征拼接（Concat）**</span>
+<span class="sd">       - 将 3D 与 2D 特征在通道维度进行拼接</span>
+<span class="sd">    2. **Linear 映射（等价于 1×1 Conv）**</span>
+<span class="sd">       - 对拼接后的特征进行通道压缩与重映射</span>
+<span class="sd">    3. **BatchNorm1d**</span>
+<span class="sd">       - 稳定特征分布，加速训练收敛</span>
+<span class="sd">    4. **ReLU 激活**</span>
+<span class="sd">       - 引入非线性，增强特征表达能力</span>
+
+<span class="sd">    ---</span>
+<span class="sd">    ### 输入</span>
+<span class="sd">    Args:</span>
+<span class="sd">        feat_3d (torch.Tensor):</span>
+<span class="sd">            来自 NRConv 3D 的体素特征，shape 为 **(M, C_3d)**</span>
+<span class="sd">        feat_2d (torch.Tensor):</span>
+<span class="sd">            来自 NRConv 2D 的体素特征，shape 为 **(M, C_2d)**</span>
+
+<span class="sd">    ---</span>
+<span class="sd">    ### 输出</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        torch.Tensor:</span>
+<span class="sd">            融合后的体素特征张量，shape 为 **(M, C_out)**</span>
+
+<span class="sd">    ---</span>
+<span class="sd">    ### 模块用途</span>
+<span class="sd">    - 融合三维几何信息与二维图像结构信息</span>
+<span class="sd">    - 提升体素特征对虚拟点噪声的鲁棒性</span>
+<span class="sd">    - 为后续 3D SpConv Backbone 提供高质量输入特征</span>
+<span class="sd">    - 属于 VirConv 的 Stage C（NRConv）末端融合算子</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">in_channels_3d</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+                 <span class="n">in_channels_2d</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+                 <span class="n">out_channels</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="n">in_channels</span> <span class="o">=</span> <span class="n">in_channels_3d</span> <span class="o">+</span> <span class="n">in_channels_2d</span>  <span class="c1"># 拼接后的通道数</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linear</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_channels</span><span class="p">,</span> <span class="n">out_channels</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># 通道融合映射</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm1d</span><span class="p">(</span><span class="n">out_channels</span><span class="p">)</span>  <span class="c1"># 批归一化</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">relu</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># 非线性激活</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                <span class="n">feat_3d</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+                <span class="n">feat_2d</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        前向传播过程。</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            feat_3d (torch.Tensor):</span>
+<span class="sd">                3D 分支体素特征，shape 为 (M, C_3d)</span>
+<span class="sd">            feat_2d (torch.Tensor):</span>
+<span class="sd">                2D 分支体素特征，shape 为 (M, C_2d)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            torch.Tensor:</span>
+<span class="sd">                融合后的体素特征，shape 为 (M, C_out)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">feat_3d</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">feat_2d</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>  <span class="c1"># 检查体素数量一致</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;feat_3d and feat_2d must have the same number of voxels&quot;</span><span class="p">)</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">feat_3d</span><span class="p">,</span> <span class="n">feat_2d</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># 通道拼接</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                        <span class="c1"># 通道融合映射</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                            <span class="c1"># 归一化</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                          <span class="c1"># 激活</span>
+        <span class="k">return</span> <span class="n">x</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="VirConvBlockStage.network.FeatureFusion.FeatureFusion.forward" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">forward</span><span class="p">(</span><span class="n">feat_3d</span><span class="p">,</span> <span class="n">feat_2d</span><span class="p">)</span></code>
+
+<a href="#VirConvBlockStage.network.FeatureFusion.FeatureFusion.forward" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>前向传播过程。</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>feat_3d</code></b>
+                  (<code><span title="torch.Tensor">Tensor</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>3D 分支体素特征，shape 为 (M, C_3d)</p>
+              </div>
+            </li>
+            <li>
+              <b><code>feat_2d</code></b>
+                  (<code><span title="torch.Tensor">Tensor</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>2D 分支体素特征，shape 为 (M, C_2d)</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="torch.Tensor">Tensor</span></code>
+              –
+              <div class="doc-md-description">
+                <p>torch.Tensor:
+融合后的体素特征，shape 为 (M, C_out)</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+            <details class="quote">
+              <summary>Source code in <code>VirConvBlockStage\network\FeatureFusion.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+            <span class="n">feat_3d</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+            <span class="n">feat_2d</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    前向传播过程。</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        feat_3d (torch.Tensor):</span>
+<span class="sd">            3D 分支体素特征，shape 为 (M, C_3d)</span>
+<span class="sd">        feat_2d (torch.Tensor):</span>
+<span class="sd">            2D 分支体素特征，shape 为 (M, C_2d)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        torch.Tensor:</span>
+<span class="sd">            融合后的体素特征，shape 为 (M, C_out)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">feat_3d</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">feat_2d</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>  <span class="c1"># 检查体素数量一致</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;feat_3d and feat_2d must have the same number of voxels&quot;</span><span class="p">)</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">feat_3d</span><span class="p">,</span> <span class="n">feat_2d</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># 通道拼接</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                        <span class="c1"># 通道融合映射</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                            <span class="c1"># 归一化</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                          <span class="c1"># 激活</span>
+    <span class="k">return</span> <span class="n">x</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../VoxelPreparationStage/" class="btn btn-neutral float-left" title="VoxelPreparationStage"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../framework/" class="btn btn-neutral float-right" title="Framework">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../VoxelPreparationStage/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../framework/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
